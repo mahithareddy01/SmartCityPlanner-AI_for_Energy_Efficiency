@@ -39,11 +39,11 @@ This project helps city planners make informed, eco-friendly decisions by combin
 
 The CLI allows users to:
 
-1. List/Add cities  
-2. List/Add sensors  
-3. List/Add energy usage records  
-4. List/Add planners  
-5. List/Add reports  
+1. Addcities  
+2. Add sensors  
+3. Add energy usage records  
+4. Add planners  
+5. Add reports  
 6. Monitor a city in real-time  
 7. Forecast energy usage  
 8. Calculate energy efficiency scores  
