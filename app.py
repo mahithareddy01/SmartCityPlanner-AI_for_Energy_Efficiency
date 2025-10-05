@@ -59,6 +59,11 @@ st.markdown("""
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border-left: 4px solid #667eea;
         animation: slideIn 0.6s ease-out;
+        color: #262730 !important; /* ADD THIS LINE */
+    }
+    
+    .metric-card h3, .metric-card h1, .metric-card p {
+        color: #262730 !important; /* ADD THIS LINE */
     }
     
     .metric-card:hover {
@@ -95,6 +100,11 @@ st.markdown("""
         transition: all 0.3s ease;
         border: 1px solid #e0e6ff;
         height: 100%;
+        color: #262730 !important; /* ADD THIS LINE */
+    }
+    
+    .feature-card h3, .feature-card p {
+        color: #262730 !important; /* ADD THIS LINE */
     }
     
     .feature-card:hover {
