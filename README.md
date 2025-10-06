@@ -85,5 +85,4 @@ By combining predictive analytics, real-time monitoring, and sustainability scor
 4. **Run the Application**
    ```bash
    streamlit run app.py
-  ```
-  
+
