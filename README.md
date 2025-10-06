@@ -76,9 +76,11 @@ By combining predictive analytics, real-time monitoring, and sustainability scor
 2. **Install Dependencies**
   ```bash
   pip install -r requirements.txt
-```
+   ```
 3.**Database Setup**
+
    Ensure that your supabase database has all the required tables.
+   
 4.**Run the Application**
   ```bash
   streamlit run app.py
