@@ -636,79 +636,54 @@ def show_overview():
         st.error("⚠️ Some data may not be available. Please check your database connection.")
 
 def main():
-    init_session_state()
+    # Main header with animation
+    st.markdown('<h1 class="main-header">🏙️ Smart City Energy Planner</h1>', unsafe_allow_html=True)
     
-    if not st.session_state.authenticated:
-        show_auth_page()
-        return
-    
-    # Sidebar Navigation - Responsive
+    # Sidebar with enhanced styling
     with st.sidebar:
-        st.markdown(f"""
-        <div style='text-align: center; padding: 1rem; color: #667eea;'>
-            <h2 style='font-size: clamp(1.2rem, 2.5vw, 1.5rem);'>🏙️ Smart City</h2>
-            <p style='font-size: clamp(0.9rem, 2vw, 1rem);'>Welcome, <strong>{st.session_state.username}</strong></p>
+        st.markdown("""
+        <div style='text-align: center; padding: 1rem; color: white;'>
+            <h2 style='color: white; margin-bottom: 2rem;'>Navigation</h2>
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("---")
-        
-        # Navigation options
-        nav_options = [
-            {"icon": "📊", "label": "Overview", "page": "Overview"},
-            {"icon": "🏙️", "label": "City Management", "page": "City Management"},
-            {"icon": "📡", "label": "Real-Time Monitoring", "page": "Real-Time Monitoring"},
-            {"icon": "🔮", "label": "Predictive Analytics", "page": "Predictive Analytics"},
-            {"icon": "🌱", "label": "Sustainability", "page": "Sustainability"},
-            {"icon": "💡", "label": "Planner Assistance", "page": "Planner Assistance"},
-            {"icon": "📈", "label": "Analytics", "page": "Analytics"}
-        ]
-        
-        for option in nav_options:
-            if st.button(f"{option['icon']} {option['label']}", 
-                        use_container_width=True, 
-                        key=option['page'],
-                        type="primary" if st.session_state.current_page == option['page'] else "secondary"):
-                st.session_state.current_page = option['page']
-                st.rerun()
+        app_mode = st.selectbox(
+            "Choose Module",
+            ["🏠 Dashboard", "🏙️ City Management", "📊 Real-Time Monitoring", 
+             "🔮 Predictive Analytics", "🌱 Sustainability", "💡 Planner Assistance", "📈 Analytics"],
+            key="nav_select"
+        )
         
         st.markdown("---")
+        st.markdown("""
+        <div style='color: white; padding: 1rem;'>
+            <h4>Quick Stats</h4>
+        </div>
+        """, unsafe_allow_html=True)
         
         # Quick stats in sidebar
-        st.markdown("### 📊 Quick Stats")
         try:
             cities = db.get_cities()
             sensors = db.get_sensors()
-            stats_col1, stats_col2 = st.columns(2)
-            with stats_col1:
-                st.metric("Cities", len(cities))
-            with stats_col2:
-                st.metric("Sensors", len(sensors))
+            st.metric("Cities", len(cities))
+            st.metric("Sensors", len(sensors))
         except:
-            st.info("Connect to database")
-        
-        st.markdown("---")
-        
-        # Logout button
-        if st.button("🚪 Logout", use_container_width=True):
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
-            st.rerun()
-    
-    # Main content area - Fixed routing
-    if st.session_state.current_page == "Overview":
-        show_overview()
-    elif st.session_state.current_page == "City Management":
+            st.info("Connect to database to see stats")
+
+    # Route to selected page
+    if "🏠 Dashboard" in app_mode:
+        show_dashboard()
+    elif "🏙️ City Management" in app_mode:
         show_city_management()
-    elif st.session_state.current_page == "Real-Time Monitoring":
+    elif "📊 Real-Time Monitoring" in app_mode:
         show_realtime_monitoring()
-    elif st.session_state.current_page == "Predictive Analytics":
+    elif "🔮 Predictive Analytics" in app_mode:
         show_predictive_analytics()
-    elif st.session_state.current_page == "Sustainability":
+    elif "🌱 Sustainability" in app_mode:
         show_sustainability()
-    elif st.session_state.current_page == "Planner Assistance":
+    elif "💡 Planner Assistance" in app_mode:
         show_planner_assistance()
-    elif st.session_state.current_page == "Analytics":
+    elif "📈 Analytics" in app_mode:
         show_analytics()
 def show_city_management():
     st.markdown('<h2 class="success-animation">🏙️ City Management Portal</h2>', unsafe_allow_html=True)
