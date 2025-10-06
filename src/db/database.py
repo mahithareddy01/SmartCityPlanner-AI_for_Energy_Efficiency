@@ -1,13 +1,13 @@
 # src/db/database.py
 from supabase import create_client, Client
 from typing import List, Dict, Optional
-from dotenv import load_dotenv
 import os
 from datetime import datetime
 
-load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+# Remove: load_dotenv()
+# Add your Supabase credentials directly
+SUPABASE_URL = "https://ysaivbwexoikbyjeiwry.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzYWl2YndleG9pa2J5amVpd3J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2MDg1MjYsImV4cCI6MjA3NDE4NDUyNn0.6KeftsnQWoy0vVVF-XlQZO_EURWkiyiimEC7MWIHBys"
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
