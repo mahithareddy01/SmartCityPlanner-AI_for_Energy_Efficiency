@@ -51,6 +51,36 @@ By combining predictive analytics, real-time monitoring, and sustainability scor
 5. 🌍 Evaluate sustainability performance  
 6. 💡 Generate improvement recommendations  
 
-### ▶️ Run the CLI
-```bash
-python main.py
+# 🌆 Energy-Efficient Smart City Planner
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![AI](https://img.shields.io/badge/Powered%20by-AI%20%26%20IoT-purple.svg)](#)
+[![Database](https://img.shields.io/badge/Database-Supabase%20%26%20PostgreSQL-3ECF8E.svg)](https://supabase.io)
+[![Status](https://img.shields.io/badge/Status-Active-success.svg)](#)
+
+---
+
+## 🚀 How to Run
+
+### Prerequisites
+- **Python 3.8+** installed
+- **Supabase account** with database setup
+- **Streamlit** for web interface
+
+### Quick Start
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/smart-city-planner.git
+   cd smart-city-planner
+2. **Install Dependencies**
+  ```bash
+  pip install -r requirements.txt
+```
+3.**Database Setup**
+   Ensure that your supabase database has all the required tables.
+4.**Run the Application**
+  ```bash
+  streamlit run app.py
+  ```
+  
