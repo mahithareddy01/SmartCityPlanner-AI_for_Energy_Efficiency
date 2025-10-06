@@ -61,3 +61,36 @@ def add_report(plannerid: int, cityid: int, summary: str, date: str = None) -> O
 def get_reports() -> List[Dict]:
     response = supabase.table("report").select("*").execute()
     return response.data
+# Add these authentication functions to your existing database.py
+
+def get_user_by_username(username: str) -> Optional[Dict]:
+    """Get user by username from Supabase"""
+    try:
+        response = supabase.table("users").select("*").eq("username", username).execute()
+        return response.data[0] if response.data else None
+    except Exception as e:
+        print(f"Error getting user by username: {e}")
+        return None
+
+def get_user_by_email(email: str) -> Optional[Dict]:
+    """Get user by email from Supabase"""
+    try:
+        response = supabase.table("users").select("*").eq("email", email).execute()
+        return response.data[0] if response.data else None
+    except Exception as e:
+        print(f"Error getting user by email: {e}")
+        return None
+
+def add_user(username: str, email: str, password_hash: str) -> Optional[Dict]:
+    """Add new user to Supabase"""
+    try:
+        payload = {
+            "username": username,
+            "email": email,
+            "password_hash": password_hash
+        }
+        response = supabase.table("users").insert(payload).execute()
+        return response.data[0] if response.data else None
+    except Exception as e:
+        print(f"Error adding user: {e}")
+        raise e
